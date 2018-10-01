@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DioramShop.Models;
+using DioramShop.Util;
 
 namespace DioramShop.Controllers
 {
@@ -33,6 +34,17 @@ namespace DioramShop.Controllers
             // сохраняем в бд все изменения
             db.SaveChanges();
             return "Спасибо," + purchase.Person + ", за покупку!";
+        }
+        public string Square(int a = 10, int h = 3)
+        {
+            double s = a * h / 2.0;
+            return "<h2>Площадь треугольника с основанием " + a +
+                    " и высотой " + h + " равна " + s + "</h2>";
+        }
+        public ActionResult GetImage()
+        {
+            string path = "../Images/BongoCatBody.png";
+            return new ImageResult(path);
         }
     }
 }
