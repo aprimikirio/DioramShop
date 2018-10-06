@@ -29,9 +29,7 @@ namespace DioramShop.Controllers
         public string Buy(Purchase purchase)
         {
             purchase.Date = DateTime.Now;
-            // добавляем информацию о покупке в базу данных
             db.Purchases.Add(purchase);
-            // сохраняем в бд все изменения
             db.SaveChanges();
             return "Спасибо," + purchase.Person + ", за покупку!";
         }
@@ -45,6 +43,11 @@ namespace DioramShop.Controllers
         {
             string path = "../Images/BongoCatBody.png";
             return new ImageResult(path);
+        }
+        public ViewResult SomeMethod()
+        {
+            ViewData["Head"] = "Some Method!";
+            return View("SomeView");
         }
     }
 }
